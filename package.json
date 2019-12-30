@@ -9,14 +9,26 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link": "^1.2.13",
+    "apollo-link-rest": "^0.7.3",
+    "axios": "^0.19.0",
     "core-js": "^3.4.3",
+    "graphql": "^14.5.8",
+    "graphql-anywhere": "^4.2.6",
+    "graphql-tag": "^2.10.1",
+    "qs": "^6.9.1",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.3.0",
-    "vuex": "^3.1.2"
+    "vuex": "^3.1.2",
+    "yup": "^0.28.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
+    "@types/node": "^12.12.22",
+    "@types/yup": "^0.26.27",
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",
     "@vue/cli-plugin-typescript": "^4.1.0",
@@ -30,7 +42,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
     "prettier": "^1.19.1",
-    "typescript": "~3.5.3",
+    "typescript": "^3.5.3",
     "vue-template-compiler": "^2.6.10"
   }
 }

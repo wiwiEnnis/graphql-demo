@@ -1,29 +1,47 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <button @click="$store.dispatch('getRestPost')">get rest posts</button>
+    <button @click="$store.dispatch('getGraphPost')">get graph posts</button>
+    <br />
+    <table>
+      <tr>
+        <th>id</th>
+        <th>userId</th>
+        <th>title</th>
+        <th>body</th>
+      </tr>
+      <tr v-for="n in posts" :key="n.id" style="">
+        <td>{{ n.id }}</td>
+        <td>{{ n.userId }}</td>
+        <td>{{ n.title }}</td>
+        <td>{{ n.body }}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+import { Component, Vue } from 'vue-property-decorator';
+import { Post } from '@/api/post/types';
 
-@Component({
-  components: {
-    HelloWorld
+@Component
+export default class App extends Vue {
+  get posts(): Post[] {
+    return this.$store.state.posts;
   }
-})
-export default class App extends Vue {}
+}
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+table {
+  width: 100%;
+  table-layout: fixed;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid black;
 }
 </style>

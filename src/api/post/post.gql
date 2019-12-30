@@ -1,0 +1,39 @@
+type Post {
+  userId: Int
+  id: Int
+  title: String
+  body: String
+}
+
+fragment fragPost on Post {
+  userId
+  id
+  title
+  body
+}
+
+query posts {
+  posts @rest(type: "[Post]", path: "posts") {
+    ...fragPost
+  }
+}
+
+query post($id: Int) {
+  post(id: $id) @rest(type: "Post", path: "posts/{args.id}") {
+    ...fragPost
+  }
+}
+
+mutation createPost($post: Post!) {
+  createPostResponse(input: $post)
+    @rest(type: "Post", path: "posts", method: "POST") {
+    ...fragPost
+  }
+}
+
+mutation updatePost($id: Int!, $post: Post! = {}) {
+  updatePostResponse(id: $id, input: $post)
+    @rest(type: "Post", path: "posts/{args.id}", method: "PUT") {
+    ...fragPost
+  }
+}
